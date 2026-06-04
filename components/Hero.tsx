@@ -13,7 +13,9 @@ const nameChars = "Mohammed".split("");
 const lastNameChars = "Halimi".split("");
 
 export default function Hero() {
-  const [avatarSrc, setAvatarSrc] = useState("/mohadev.png");
+  const [avatarSrc] = useState("/mohadev.png");
+  // const [avatarSrc, setAvatarSrc] = useState("/mohadev.png");
+
   const fileRef = useRef<HTMLInputElement>(null);
   const [hoveredName, setHoveredName] = useState(false);
 
