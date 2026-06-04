@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { experiences } from "@/lib/constants";
 import { staggerContainer, staggerItem } from "@/lib/animations";
 
-const borderColors = ["#06b6d4", "#8b5cf6", "#ec4899"];
+const borderColors = ["#06b6d4", "#8b5cf6", "#ec4899", "#22c55e"];
 
 export default function Experience() {
   const [inView, setInView] = useState(false);

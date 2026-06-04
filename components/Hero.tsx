@@ -155,7 +155,9 @@ export default function Hero() {
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all flex items-center justify-center">
                     <span className="opacity-0 group-hover:opacity-100 text-[10px] text-white font-medium transition-opacity">Change</span>
                   </div>
-                  <input ref={fileRef} type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
+                  <input ref={fileRef} type="file" accept="image/*"  className="hidden" /> 
+                  {/* chnager manually image of website */}
+                  {/* onChange={handleFileChange} */}
                 </label>
               </div>
             </div>

@@ -75,20 +75,24 @@ export default function Projects() {
                 <div className="flex items-center justify-between mb-4 relative z-10">
                   <h3 className="font-syne font-bold text-lg text-white">{p.title}</h3>
                   <div className="flex gap-2">
-                    <a
-                      href="#"
-                      className="text-text2 hover:text-white transition-colors"
-                      aria-label="GitHub repository"
-                    >
-                      <GitHubIcon size={16} />
-                    </a>
-                    <a
-                      href="#"
-                      className="text-text2 hover:text-white transition-colors"
-                      aria-label="Live demo"
-                    >
-                      <ExternalLink size={16} />
-                    </a>
+                    {p.github && (
+                      <a
+                        href={p.github}
+                        className="text-text2 hover:text-white transition-colors"
+                        aria-label="GitHub repository"
+                      >
+                        <GitHubIcon size={16} />
+                      </a>
+                    )}
+                    {p.live && (
+                      <a
+                        href={p.live}
+                        className="text-text2 hover:text-white transition-colors"
+                        aria-label="Live demo"
+                      >
+                        <ExternalLink size={16} />
+                      </a>
+                    )}
                   </div>
                 </div>
 

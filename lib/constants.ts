@@ -70,6 +70,14 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
+    period: "2024 — Present",
+    title: "Digiton",
+    role: "Full-Stack Web Developer Intern",
+    description: "Contributed to the development and maintenance of several real-world web projects for companies and clients. Transformed Figma designs into fully responsive and interactive web interfaces using HTML and Tailwind CSS, ensuring compatibility across desktop, tablet, and mobile devices. Developed and customized WordPress websites, including a multilingual platform (French & English) — theme customization, content management, responsive design, and feature integration. Developed frontend and backend features: database design, dashboard development, bug fixing, performance optimization, and application maintenance. Gained hands-on expertise in full-stack development, client-oriented solutions, UI/UX implementation, version control with Git, and modern web development workflows.\n\nFeatured project — Tecas: Solar Energy Platform. A digital campaign for Tecas, a solar energy company serving the eco-tourism sector, built to showcase solar installations in tourist establishments with visual content and targeted editorial strategy. Developed and maintained frontend and backend features: service presentation, product management, content management, and UX improvements.",
+    techStack: ["Laravel", "Livewire", "Filament", "PHP", "JavaScript", "MySQL", "Tailwind CSS", "WordPress", "Git", "Figma"],
+    duration: "7 months",
+  },
+  {
     period: "2022 — 2023",
     title: "Inventory Management System",
     role: "Project Lead / Full-Stack",
@@ -126,6 +134,28 @@ export const projects: Project[] = [
     description: "Personnel rotation management platform handling position changes, shift scheduling, and cross-team transfers.",
     tags: ["Laravel", "Alpine.js", "MySQL"],
     gradient: ["#ec4899", "#db2777"],
+  },
+  {
+    num: "04",
+    title: "Tecas — Solar & Eco-Tourism Platform",
+    description: "Digital platform for Tecas, a solar energy company in the eco-tourism sector. Contributed to frontend and backend development: service presentation, product management, content management, and user experience improvements. Client project — no public GitHub link.",
+    tags: ["Laravel", "Livewire", "Filament", "MySQL", "Tailwind CSS", "PHP"],
+    gradient: ["#22c55e", "#16a34a"],
+  },
+  {
+    num: "05",
+    title: "Multilingual WordPress Website",
+    description: "Developed and customized a multilingual WordPress website available in French and English. Work included theme customization, content management, responsive design implementation, website optimization, and feature integration based on client requirements. Client project — no public GitHub link.",
+    tags: ["WordPress", "HTML", "CSS", "JavaScript"],
+    gradient: ["#f97316", "#ea580c"],
+  },
+  {
+    num: "06",
+    title: "New Horizons Agri — Agricultural Consulting Platform",
+    description: "Full website for a Moroccan agricultural consulting firm (cabinet de conseil agricole). The platform presents their services — feasibility studies, agricultural project management, technical assistance, and product sales. Includes a blog (AgriMag), project showcase, team presentation, appointment booking, and contact pages. Built with Laravel, fully responsive, optimized for SEO with Open Graph meta tags. Client project — built at Digiton agency.",
+    tags: ["Laravel", "PHP", "MySQL", "Tailwind CSS", "JavaScript", "HTML", "CSS"],
+    gradient: ["#eab308", "#ca8a04"],
+    live: "https://newhorizonsagri.com",
   },
 ];
 
