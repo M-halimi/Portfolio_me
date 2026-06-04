@@ -17,12 +17,12 @@ export default function Hero() {
   const fileRef = useRef<HTMLInputElement>(null);
   const [hoveredName, setHoveredName] = useState(false);
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setAvatarSrc(URL.createObjectURL(file));
-    }
-  };
+  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = e.target.files?.[0];
+  //   if (file) {
+  //     setAvatarSrc(URL.createObjectURL(file));
+  //   }
+  // };
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center pt-24 pb-16 px-6 overflow-hidden">
