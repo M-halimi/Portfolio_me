@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Mail, Phone, ArrowUp } from "lucide-react";
 import GitHubIcon from "@/components/GitHubIcon";
+import LinkedInIcon from "@/components/LinkedInIcon";
 
 export default function Footer() {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -79,6 +80,15 @@ export default function Footer() {
               aria-label="GitHub"
             >
               <GitHubIcon size={16} />
+            </a>
+            <a
+              href="https://linkedin.com/in/m-halimi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-text2 hover:text-white transition-colors"
+              aria-label="LinkedIn"
+            >
+              <LinkedInIcon size={16} />
             </a>
             <a
               href="mailto:mohammed.halimi.dev@gmail.com"

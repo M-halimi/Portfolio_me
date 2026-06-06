@@ -81,7 +81,7 @@ export default function Skills() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           <AnimatePresence mode="wait">
-            {filteredSkills.map(({ name, level, years, gradient }, i) => {
+            {filteredSkills.map(({ name, level, years, gradient, proficiency }, i) => {
               const Icon = iconMap[name] || Code2;
               const { r, g, b } = hexToRgb(gradient[0]);
               return (
@@ -119,7 +119,7 @@ export default function Skills() {
                       }} />
                   </div>
                   <div className="flex items-center justify-between mt-1.5">
-                    <span className="text-xs font-dm" style={{ color: gradient[0] }}>{level}%</span>
+                    <span className="text-[10px] font-dm uppercase tracking-wider" style={{ color: gradient[0] }}>{proficiency}</span>
                     <span className="text-[10px] text-text2/60 font-dm">{years}</span>
                   </div>
                 </motion.div>

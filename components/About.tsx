@@ -55,14 +55,14 @@ export default function About() {
             <div className="relative z-10">
               <h2 className="font-syne font-bold text-3xl text-white mb-6">About Me</h2>
               <p className="text-text2 text-sm leading-relaxed mb-4">
-                I&apos;m a Full-Stack Developer based in F&egrave;s, Morocco, passionate about building clean, scalable web
-                applications. With a strong foundation in PHP ecosystems and modern JavaScript frameworks, I turn complex
-                problems into intuitive digital solutions.
+                I started coding because I wanted to build things that actually help people. What began with tinkering on PHP scripts
+                turned into a full-stack journey across Laravel, React, and the modern web ecosystem. Based in F&egrave;s, Morocco,
+                I&apos;ve grown from building my first CRUD app to shipping production systems for real businesses.
               </p>
               <p className="text-text2 text-sm leading-relaxed mb-4">
-                From inventory management systems to intern portals and personnel rotation platforms, I&apos;ve delivered
-                projects that streamline workflows and empower teams. I believe in writing code that&apos;s as maintainable
-                as it is functional.
+                What drives me? Taking a messy problem — whether it&apos;s chaotic inventory tracking or a manual intern workflow —
+                and turning it into a clean, automated solution that people genuinely enjoy using. I believe great code isn&apos;t
+                just functional; it&apos;s invisible — the kind that lets users focus on their work, not the tool.
               </p>
               <div className="flex items-center gap-2 text-xs text-text2 font-dm mt-6">
                 <span className="text-text2/60">Currently building:</span>

@@ -28,6 +28,18 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [logoChars, setLogoChars] = useState(0);
   const [logoDone, setLogoDone] = useState(false);
+  const [hidden, setHidden] = useState(false);
+
+  useEffect(() => {
+    let lastScroll = 0;
+    const onScroll = () => {
+      const current = window.scrollY;
+      setHidden(current > lastScroll && current > 80);
+      lastScroll = current;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -61,13 +73,19 @@ export default function Navbar() {
 
   const scrollTo = (id: string) => {
     setMobileOpen(false);
+    setHidden(false);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const toggleMobile = () => {
+    setMobileOpen((o) => !o);
+    setHidden(false);
   };
 
   return (
     <>
       <ScrollProgress />
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-bg/80 backdrop-blur-md border-b border-border">
+      <nav className={`fixed top-0 left-0 right-0 z-50 bg-bg/80 backdrop-blur-md border-b border-border transition-transform duration-300 ${hidden ? "-translate-y-full" : "translate-y-0"}`}>
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <button
             onClick={() => scrollTo("hero")}
@@ -105,7 +123,7 @@ export default function Navbar() {
 
           <button
             className="md:hidden text-text2 hover:text-text"
-            onClick={() => setMobileOpen(!mobileOpen)}
+            onClick={toggleMobile}
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}

@@ -1,5 +1,8 @@
 import FloatingParticles from "@/components/ui/FloatingParticles";
 import CustomCursor from "@/components/ui/CustomCursor";
+import CommandPalette from "@/components/ui/CommandPalette";
+import AIAssistant from "@/components/ui/AIAssistant";
+import DevStatus from "@/components/ui/DevStatus";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
@@ -15,6 +18,9 @@ export default function Home() {
     <>
       <CustomCursor />
       <FloatingParticles />
+      <CommandPalette />
+      <AIAssistant />
+      <DevStatus />
       <Navbar />
       <main>
         <Hero />

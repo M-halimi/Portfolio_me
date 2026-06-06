@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Send } from "lucide-react";
+import { Send, Check } from "lucide-react";
 import { fadeUp } from "@/lib/animations";
 
 const contacts = [
@@ -13,6 +13,7 @@ const contacts = [
 
 export default function Contact() {
   const [inView, setInView] = useState(false);
+  const [formState, setFormState] = useState<"idle" | "sending" | "sent">("idle");
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -30,6 +31,25 @@ export default function Contact() {
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormState("sending");
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
+      });
+      setFormState("sent");
+      form.reset();
+    } catch {
+      setFormState("idle");
+    }
+  };
 
   return (
     <section id="contact" ref={ref} className="relative py-24 px-6 border-t border-border overflow-hidden">
@@ -68,6 +88,59 @@ export default function Contact() {
             >
               Send Email <Send size={14} />
             </a>
+
+            <form
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              onSubmit={handleSubmit}
+              className="mt-8 space-y-4"
+            >
+              <input type="hidden" name="form-name" value="contact" />
+              <div className="grid grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your name"
+                  required
+                  className="w-full bg-transparent border border-border px-4 py-3 text-sm text-text placeholder:text-text2/40 font-dm outline-none transition-all duration-300 focus:border-accent-cyan focus:shadow-[0_0_12px_rgba(6,182,212,0.1)]"
+                />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your email"
+                  required
+                  className="w-full bg-transparent border border-border px-4 py-3 text-sm text-text placeholder:text-text2/40 font-dm outline-none transition-all duration-300 focus:border-accent-cyan focus:shadow-[0_0_12px_rgba(6,182,212,0.1)]"
+                />
+              </div>
+              <input
+                type="text"
+                name="subject"
+                placeholder="Subject"
+                className="w-full bg-transparent border border-border px-4 py-3 text-sm text-text placeholder:text-text2/40 font-dm outline-none transition-all duration-300 focus:border-accent-cyan focus:shadow-[0_0_12px_rgba(6,182,212,0.1)]"
+              />
+              <textarea
+                name="message"
+                placeholder="Your message"
+                rows={4}
+                required
+                className="w-full bg-transparent border border-border px-4 py-3 text-sm text-text placeholder:text-text2/40 font-dm outline-none resize-none transition-all duration-300 focus:border-accent-cyan focus:shadow-[0_0_12px_rgba(6,182,212,0.1)]"
+              />
+              <button
+                type="submit"
+                disabled={formState !== "idle"}
+                className={`inline-flex items-center gap-2 text-sm font-medium px-6 py-3 transition-all duration-300 ${
+                  formState === "sent"
+                    ? "bg-accent-green text-white border border-accent-green"
+                    : "border border-border text-text hover:bg-white hover:text-bg hover:border-white"
+                }`}
+              >
+                {formState === "idle" && <>Send Message <Send size={14} /></>}
+                {formState === "sending" && <>Sending...</>}
+                {formState === "sent" && <><Check size={14} /> Message sent!</>}
+              </button>
+            </form>
+
             <div className="mt-4 flex items-center gap-2 text-[10px] text-text2/60 font-dm">
               <span className="text-accent-orange">⚡</span>
               Usually responds within 24h

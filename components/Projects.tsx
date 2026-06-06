@@ -3,11 +3,14 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, ArrowRight } from "lucide-react";
 import GitHubIcon from "@/components/GitHubIcon";
+import ProjectModal from "@/components/ui/ProjectModal";
 import { projects } from "@/lib/constants";
 import { staggerContainer, staggerItem } from "@/lib/animations";
+import type { Project } from "@/lib/constants";
 
 export default function Projects() {
   const [inView, setInView] = useState(false);
+  const [selected, setSelected] = useState<Project | null>(null);
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -54,7 +57,8 @@ export default function Projects() {
             <motion.div
               key={p.num}
               variants={staggerItem}
-              className="group relative border border-border pt-0 transition-all duration-500 hover:-translate-y-1.5 hover:bg-bg3 overflow-hidden"
+              className="group relative border border-border pt-0 transition-all duration-500 hover:-translate-y-1.5 hover:bg-bg3 overflow-hidden cursor-pointer"
+              onClick={() => setSelected(p)}
             >
               <div
                 className="h-[3px] w-full transition-all duration-500 group-hover:shadow-lg"
@@ -78,6 +82,7 @@ export default function Projects() {
                     {p.github && (
                       <a
                         href={p.github}
+                        onClick={(e) => e.stopPropagation()}
                         className="text-text2 hover:text-white transition-colors"
                         aria-label="GitHub repository"
                       >
@@ -87,6 +92,9 @@ export default function Projects() {
                     {p.live && (
                       <a
                         href={p.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
                         className="text-text2 hover:text-white transition-colors"
                         aria-label="Live demo"
                       >
@@ -140,6 +148,8 @@ export default function Projects() {
           </a>
         </motion.div>
       </div>
+
+      <ProjectModal project={selected} onClose={() => setSelected(null)} />
     </section>
   );
 }

@@ -1,7 +1,8 @@
 "use client";
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowRight, Mail, Phone } from "lucide-react";
+import { ArrowDown, ArrowRight, Mail, Phone, FileText } from "lucide-react";
+import LinkedInIcon from "@/components/LinkedInIcon";
 import Image from "next/image";
 import GitHubIcon from "@/components/GitHubIcon";
 import TypedText from "@/components/ui/TypedText";
@@ -94,8 +95,8 @@ export default function Hero() {
           </div>
 
           <p className="text-text2 text-sm leading-relaxed mb-8 max-w-md font-dm">
-            Passionné par le développement web, je conçois des applications modernes et performantes avec Laravel, React et
-            écosystème PHP. Basé à Fès, Maroc.
+            I build modern, performant web applications with Laravel, React, and the PHP ecosystem.
+            Based in Fès, Morocco — crafting digital solutions that make a real impact.
           </p>
 
           <div className="flex flex-wrap gap-4 mb-10">
@@ -111,11 +112,21 @@ export default function Hero() {
             >
               Get In Touch <ArrowRight size={14} />
             </a>
+            <a
+              href="/cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 border border-border text-text text-sm font-medium px-6 py-3 transition-all duration-300 hover:bg-accent-cyan/10 hover:border-accent-cyan hover:text-accent-cyan"
+            >
+              <FileText size={14} />
+              Resume
+            </a>
           </div>
 
           <div className="flex items-center gap-5">
             {[
               { icon: <GitHubIcon size={20} />, label: "GitHub", href: "https://github.com/M-halimi" },
+              { icon: <LinkedInIcon size={20} />, label: "LinkedIn", href: "https://linkedin.com/in/m-halimi" },
               { icon: <Mail size={20} />, label: "Email", href: "mailto:mohammed.halimi.dev@gmail.com" },
               { icon: <Phone size={20} />, label: "Phone", href: "tel:+212625945061" },
             ].map(({ icon, label, href }) => (

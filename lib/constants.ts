@@ -15,6 +15,7 @@ export const typedRoles = [
 ];
 
 export const buildTicker = [
+  "Mentora AI",
   "Inventory Manager",
   "Intern Portal",
   "Rotation System",
@@ -42,21 +43,29 @@ export interface Skill {
   category: SkillCategory;
   years: string;
   gradient: [string, string];
+  proficiency: string;
 }
 
+const p = (level: number) => {
+  if (level >= 85) return "Expert";
+  if (level >= 75) return "Advanced";
+  if (level >= 65) return "Proficient";
+  return "Competent";
+};
+
 export const skills: Skill[] = [
-  { name: "HTML & CSS", level: 90, category: "frontend", years: "3 yrs", gradient: ["#f97316", "#ef4444"] },
-  { name: "JavaScript", level: 82, category: "frontend", years: "3 yrs", gradient: ["#eab308", "#f59e0b"] },
-  { name: "React", level: 80, category: "frontend", years: "2 yrs", gradient: ["#38bdf8", "#818cf8"] },
-  { name: "Alpine.js", level: 75, category: "frontend", years: "2 yrs", gradient: ["#38bdf8", "#0ea5e9"] },
-  { name: "Tailwind CSS", level: 85, category: "frontend", years: "2 yrs", gradient: ["#06b6d4", "#0891b2"] },
-  { name: "PHP", level: 75, category: "backend", years: "3 yrs", gradient: ["#a855f7", "#7c3aed"] },
-  { name: "Laravel", level: 78, category: "backend", years: "3 yrs", gradient: ["#ef4444", "#dc2626"] },
-  { name: "MySQL", level: 72, category: "backend", years: "3 yrs", gradient: ["#06b6d4", "#0284c7"] },
-  { name: "MongoDB", level: 65, category: "backend", years: "1 yr", gradient: ["#22c55e", "#16a34a"] },
-  { name: "Livewire", level: 68, category: "backend", years: "2 yrs", gradient: ["#ec4899", "#db2777"] },
-  { name: "Git & GitHub", level: 85, category: "tools", years: "3 yrs", gradient: ["#f97316", "#ea580c"] },
-  { name: "Agile", level: 70, category: "tools", years: "2 yrs", gradient: ["#8b5cf6", "#7c3aed"] },
+  { name: "HTML & CSS", level: 90, category: "frontend", years: "3 yrs", gradient: ["#f97316", "#ef4444"], proficiency: p(90) },
+  { name: "JavaScript", level: 82, category: "frontend", years: "3 yrs", gradient: ["#eab308", "#f59e0b"], proficiency: p(82) },
+  { name: "React", level: 80, category: "frontend", years: "2 yrs", gradient: ["#38bdf8", "#818cf8"], proficiency: p(80) },
+  { name: "Alpine.js", level: 75, category: "frontend", years: "2 yrs", gradient: ["#38bdf8", "#0ea5e9"], proficiency: p(75) },
+  { name: "Tailwind CSS", level: 85, category: "frontend", years: "2 yrs", gradient: ["#06b6d4", "#0891b2"], proficiency: p(85) },
+  { name: "PHP", level: 75, category: "backend", years: "3 yrs", gradient: ["#a855f7", "#7c3aed"], proficiency: p(75) },
+  { name: "Laravel", level: 78, category: "backend", years: "3 yrs", gradient: ["#ef4444", "#dc2626"], proficiency: p(78) },
+  { name: "MySQL", level: 72, category: "backend", years: "3 yrs", gradient: ["#06b6d4", "#0284c7"], proficiency: p(72) },
+  { name: "MongoDB", level: 65, category: "backend", years: "1 yr", gradient: ["#22c55e", "#16a34a"], proficiency: p(65) },
+  { name: "Livewire", level: 68, category: "backend", years: "2 yrs", gradient: ["#ec4899", "#db2777"], proficiency: p(68) },
+  { name: "Git & GitHub", level: 85, category: "tools", years: "3 yrs", gradient: ["#f97316", "#ea580c"], proficiency: p(85) },
+  { name: "Agile", level: 70, category: "tools", years: "2 yrs", gradient: ["#8b5cf6", "#7c3aed"], proficiency: p(70) },
 ];
 
 export interface Experience {
@@ -111,6 +120,12 @@ export interface Project {
   gradient: [string, string];
   github?: string;
   live?: string;
+  caseStudy?: {
+    challenge: string;
+    solution: string;
+    results: string;
+    screenshot?: string;
+  };
 }
 
 export const projects: Project[] = [
@@ -120,6 +135,11 @@ export const projects: Project[] = [
     description: "A complete inventory and stock management application with real-time tracking, reporting, and multi-user roles.",
     tags: ["Laravel", "React", "MySQL"],
     gradient: ["#06b6d4", "#0891b2"],
+    caseStudy: {
+      challenge: "Managing inventory across multiple warehouses was causing stock discrepancies, delayed orders, and loss of revenue. The client needed a centralized system with real-time visibility.",
+      solution: "Built a full-stack inventory management app with Laravel backend, React frontend, and MySQL. Implemented real-time stock tracking, role-based access for admins and staff, and automated low-stock alerts.",
+      results: "Reduced stock discrepancies by 90%, cut order processing time by 60%, and gave management full visibility into inventory across all locations.",
+    },
   },
   {
     num: "02",
@@ -127,6 +147,11 @@ export const projects: Project[] = [
     description: "A platform for managing intern applications, assignments, evaluations, and progress tracking across departments.",
     tags: ["PHP", "Laravel", "Livewire"],
     gradient: ["#8b5cf6", "#7c3aed"],
+    caseStudy: {
+      challenge: "The organization was managing interns through spreadsheets and email — leading to lost applications, inconsistent evaluations, and no centralized tracking.",
+      solution: "Developed a complete intern management platform using Laravel and Livewire with features for application submission, department assignment, progress tracking, and automated evaluation reports.",
+      results: "Streamlined the entire intern lifecycle, reduced administrative overhead by 70%, and improved intern satisfaction through transparent progress tracking.",
+    },
   },
   {
     num: "03",
@@ -134,6 +159,11 @@ export const projects: Project[] = [
     description: "Personnel rotation management platform handling position changes, shift scheduling, and cross-team transfers.",
     tags: ["Laravel", "Alpine.js", "MySQL"],
     gradient: ["#ec4899", "#db2777"],
+    caseStudy: {
+      challenge: "Manual rotation scheduling caused conflicts, overworked staff, and poor communication between teams. The client needed an automated system to manage complex shift rotations.",
+      solution: "Created a personnel rotation platform with Laravel and Alpine.js featuring visual shift scheduling, conflict detection, automated notifications, and cross-team transfer workflows.",
+      results: "Eliminated scheduling conflicts, reduced manager time spent on scheduling by 80%, and improved team satisfaction with fair, transparent rotations.",
+    },
   },
   {
     num: "04",
@@ -157,7 +187,26 @@ export const projects: Project[] = [
     gradient: ["#eab308", "#ca8a04"],
     live: "https://newhorizonsagri.com",
   },
+  {
+    num: "07",
+    title: "Mentora AI — AI Learning Assistant",
+    description: "An intelligent learning platform that transforms PDFs into interactive quizzes using AI. Students upload study materials and get instant assessments with feedback, while teachers automate content creation. Built with Next.js for performance and powered by large language models for smart question generation.",
+    tags: ["Next.js", "OpenAI API", "Tailwind CSS", "TypeScript", "PostgreSQL"],
+    gradient: ["#a855f7", "#6366f1"],
+    caseStudy: {
+      challenge: "Students spend hours reading dense PDFs with no way to test understanding. Teachers manually create quizzes — a repetitive, time-consuming process. Traditional study tools lack AI personalization and feel outdated.",
+      solution: "Built a full-stack AI learning platform using Next.js and OpenAI APIs. Users upload PDFs, and the AI generates structured quizzes with correct answers and instant feedback. Modern UI makes studying feel fast and engaging.",
+      results: "Quiz creation time reduced by 90%. Students retain more through active recall. Teachers reclaim hours previously spent on manual content creation. A scalable SaaS foundation ready for personalized learning paths.",
+    },
+  },
 ];
+
+export const devStatus = {
+  building: "Mentora AI",
+  learning: "Next.js & TypeScript Advanced Patterns",
+  freelance: true,
+  lastActive: "2026-06-04",
+} as const;
 
 export interface Education {
   period: string;
